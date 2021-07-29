@@ -13,7 +13,7 @@
 </style>
 <body>
 <div>
-    <canvas id="canvas" style="width:600px;height:400px;"></canvas>
+    <canvas id="canvas" width="600" height="400"></canvas>
 </div>
 <script>
 //获取上下文
@@ -21,13 +21,21 @@ window.addEventListener('load',function (){
     let canvas=document.getElementById('canvas');
     //获取上下文
     let ctx=canvas.getContext('2d');//绘制的工具箱
-    //移动画笔
-    //起点
-    ctx.moveTo(20,100);
-    //绘制直线
-    ctx.lineTo(300,100);
-    //描边
+    //
+    ctx.beginPath();
+    ctx.rect(100,100,300,200);
+    ctx.fillStyle = "#FFA500";
+    ctx.strokeStyle ="yellow";
+    ctx.fill();
     ctx.stroke();
+    //填充性绘制矩形
+    ctx.beginPath();
+    ctx.fillRect(200,100,100,400);
+    //清空画布
+    ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+
+
+
 
 })
 </script>

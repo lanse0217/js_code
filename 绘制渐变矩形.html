@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #canvas{
+        border: 1px solid #000;
+        display: block;
+        margin: 100px auto;
+    }
+    #box{
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(to right,yellow,purple);
+    }
+</style>
+<body>
+<div>
+    <div id="box"></div>
+    <canvas id="canvas" width="600" height="400"></canvas>
+</div>
+<script>
+//获取上下文
+window.addEventListener('load',function (){
+    let canvas=document.getElementById('canvas');
+    //获取上下文
+    let ctx=canvas.getContext('2d');//绘制的工具箱
+    //渐变方案
+    let linearGradient=ctx.createLinearGradient(100,100,300,200);
+    linearGradient.addColorStop(0,"red");
+    linearGradient.addColorStop(0.5,"blue");
+    linearGradient.addColorStop(1,"yellow");
+    ctx.fillStyle=linearGradient;
+    ctx.fillRect(50,50,300,200);
+    //
+    ctx.beginPath();
+    let linearGradient2=ctx.createLinearGradient(300,200,400,2000);
+    linearGradient2.addColorStop(0,"pink");
+    linearGradient2.addColorStop(0.5,"blue");
+    linearGradient2.addColorStop(1,"yellow");
+    ctx.fillStyle=linearGradient2;
+    ctx.fillRect(300,200,400,200);
+
+
+
+
+
+})
+</script>
+</body>
+</html>
