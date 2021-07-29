@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #canvas{
+        border: 1px solid #000;
+        display: block;
+        margin: 100px auto;
+    }
+
+</style>
+<body>
+<div>
+
+    <canvas id="canvas" width="600" height="400"></canvas>
+</div>
+<script>
+//获取上下文
+window.addEventListener('load',function (){
+    let canvas=document.getElementById('canvas');
+    //获取上下文
+    let ctx=canvas.getContext('2d');//绘制的工具箱
+
+    //创建图片对象
+    let img=new Image();
+    img.src="img/s1.jpg";
+    img.addEventListener('load',()=>{
+        console.log(img);
+        //ctx.drawImage(img,0,0,400,300);//这个00相对与画布canvas左上角
+        /*drawImage(image: CanvasImageSource,
+        sx: number,截取的起始点
+         sy: number,
+         sw: number,截取图片的高度宽度
+          sh: number,
+          dx: number,绘制图片的
+          dy: number,
+          dw: number,
+          dh: number): void;
+        */
+        ctx.drawImage(img,0,0,600,800,0,0,200,200);//不是裁剪，
+    })
+
+
+
+
+
+
+})
+</script>
+</body>
+</html>

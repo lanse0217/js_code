@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #canvas{
+        border: 1px solid #000;
+        display: block;
+        margin: 100px auto;
+    }
+
+</style>
+<body>
+<div>
+
+    <canvas id="canvas" width="600" height="400"></canvas>
+</div>
+<script>
+//获取上下文
+window.addEventListener('load',function (){
+    let canvas=document.getElementById('canvas');
+    //获取上下文
+    let ctx=canvas.getContext('2d');//绘制的工具箱
+    let x=ctx.canvas.width,y=ctx.canvas.height;
+    ctx.beginPath();
+    let linearGradient2=ctx.createLinearGradient(270,140,300,400);
+    linearGradient2.addColorStop(0,"pink");
+    linearGradient2.addColorStop(0.5,"blue");
+    linearGradient2.addColorStop(1,"yellow");
+    ctx.fillStyle=linearGradient2;
+    ctx.arc(x/2,y/2,100,0,Math.PI*1.6,false);
+    ctx.fill();
+    //
+    ctx.beginPath();
+    //分成多少分
+    let num=6;
+    //一份多少弧度
+    let angle=2*Math.PI / num;
+    //圆心
+    let x0=x/2,y0=y/2;
+    //获取随机颜色
+    let getRandomColor=()=>{
+        let r=Math.floor(Math.random()*256);
+        let g=Math.floor(Math.random()*256);
+        let b=Math.floor(Math.random()*256);
+        return `rgb(${r},${g},${b})`;
+
+    }
+    //绘制
+    for (let i=0;i<num;i++){
+        //起始角度
+        let startAngle=i*angle;
+        //结束角度
+        let endAngle=(i+1)*angle;
+        //
+        ctx.beginPath();
+        ctx.moveTo(x0,y0);
+        ctx.arc(x0,y0,180,startAngle,endAngle,false);
+        ctx.fillStyle=getRandomColor();
+        ctx.fill();
+    }
+
+
+
+
+
+
+})
+</script>
+</body>
+</html>
