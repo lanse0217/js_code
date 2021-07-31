@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>post请求</h1>
+<label><input type="text" id="account" name="account" placeholder="请输入用户名"></label>
+<label><input type="text" id="pwd" name="pwd" placeholder="请输入密码"></label>
+<button id="btn">发起post请求</button>
+<script src="/js/AjaxTool3.js"></script>
+<script>
+ window.addEventListener('load',function (){
+     btn.addEventListener("click",()=>{
+         //0.获取用户传递的数据
+         let account=document.getElementById("account").value;
+         let pwd=document.getElementById('pwd').value;
+         let obj={
+             requestType:"post",
+             url:"http://localhost:3000/api/four",
+             paramsObj:{
+                 account,
+                 pwd
+             },
+
+         };
+         let obj2={
+             requestType:"get",
+             url:"http://localhost:3000/api/two",
+             paramsObj:{
+                 account,
+                 pwd
+             },
+             isLoad:false
+         }
+         AjaxTool.ajaxRequest(obj2,(result)=>{console.log(result);},(result)=>{console.log(result);})
+
+     })
+ })
+</script>
+
+
+</body>
+</html>

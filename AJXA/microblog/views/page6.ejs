@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>post请求</h1>
+<label><input type="text" id="account" name="account" placeholder="请输入用户名"></label>
+<label><input type="text" id="pwd" name="pwd" placeholder="请输入密码"></label>
+<button id="btn">发起请求</button>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script>
+ window.addEventListener('load',function (){
+     btn.addEventListener("click",()=>{
+         //0.获取用户传递的数据
+         let account=document.getElementById("account").value;
+         let pwd=document.getElementById('pwd').value;
+
+        $.get("http://localhost:3000/api/two",{account,pwd },(data)=>{
+          console.log(data);
+        })
+
+     })
+ })
+</script>
+
+
+</body>
+</html>

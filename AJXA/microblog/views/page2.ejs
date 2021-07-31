@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>get请求1</h1>
+<label><input type="text" id="account" name="account" placeholder="请输入用户名"></label>
+<label><input type="text" id="pwd" name="pwd" placeholder="请输入密码"></label>
+<button id="btn">发起get请求</button>
+<script type="text">
+ window.addEventListener('load',function (){
+     btn.addEventListener("click",()=>{
+         //0.获取用户传递的数据
+         let account=document.getElementById("account").value;
+         let pwd=document.getElementById('pwd').value;
+
+         //1.创建一个请求对象
+         let xhr=new XMLHttpRequest();
+         //2.准备发送
+         xhr.open('get',`http://localhost:3000/api/two?account=${account}&pwd=${pwd}`,true);//没有参数直接调用接口，有参数用拼接的方式
+         //3.发送请求
+         xhr.send();
+         //4.监听服务端相应
+         xhr.addEventListener('readystatechange',()=>{
+             console.log(xhr.readyState);
+             if(xhr.readyState===4){
+                 if(xhr.status===200){
+                     document.write(xhr.response);
+                 }
+             }
+         })
+     })
+ })
+</script>
+<script src="/js/AjaxTool2.js"></script>
+<script>
+    window.addEventListener('load',function (){
+        btn.addEventListener("click",()=>{
+            //0.获取用户传递的数据
+            let account=document.getElementById("account").value;
+            let pwd=document.getElementById('pwd').value;
+            let paramsObj={account,pwd};//属性简写
+            AjaxTool.ajaxRequest("http://localhost:3000/api/two",paramsObj,false,(result)=>{console.log(result);},(result)=>{console.log(result);})
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>get请求1</h1>
+<button id="btn">发起get请求</button>
+<script>
+ window.addEventListener('load',function (){
+     btn.addEventListener("click",()=>{
+         //1.创建一个请求对象
+         let xhr=new XMLHttpRequest();
+         //2.准备发送
+         xhr.open('get','http://localhost:3000/api/one',true);
+         //3.发送请求
+         xhr.send();
+         //4.监听服务端相应
+         xhr.addEventListener('readystatechange',()=>{
+             console.log(xhr.readyState);
+             if(xhr.readyState===4){
+                 if(xhr.status===200){
+                     document.write(xhr.response);
+                 }
+             }
+         })
+     })
+ })
+</script>
+</body>
+</html>
